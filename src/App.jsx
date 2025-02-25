@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import "./index.css";
 
-const socket = io("https://chatbot-backend-h8d0.onrender.com/");
+const socket = io("https://chatbot-backend-h8d0.onrender.com", {
+  path: "/socket.io/",
+});
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -38,8 +40,8 @@ const Chatbot = () => {
     }
   };
 
-  const handleKeyPress = (event) =>{
-    if ( event.key == "Enter"){
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
       sendMessage();
     }
   };
@@ -47,7 +49,7 @@ const Chatbot = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <div className="w-full max-w-md p-4 bg-white rounded-lg shadow-lg">
-      <div className="flex flex-col items-center mb-4 bg-gray-200">
+        <div className="flex flex-col items-center mb-4 bg-gray-200">
           <img src="/chatbot.gif" alt="Chatbot" className="h-20 w-20 mb-2" />
           <h1 className="text-xl font-semibold text-gray-700">Chatbot Assistant</h1>
         </div>
@@ -64,7 +66,11 @@ const Chatbot = () => {
               {msg.text}
             </div>
           ))}
-          {isTyping && <div className="p-3 bg-gray-300 text-black self-start rounded-lg max-w-xs">Bot is typing...</div>}
+          {isTyping && (
+            <div className="p-3 bg-gray-300 text-black self-start rounded-lg max-w-xs">
+              Bot is typing...
+            </div>
+          )}
         </div>
         <div className="flex mt-2">
           <input
@@ -73,7 +79,7 @@ const Chatbot = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message..."
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
           <button
             className="p-3 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600"
@@ -88,3 +94,4 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
+
