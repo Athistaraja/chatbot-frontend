@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import "./index.css";
 
-const socket = io("https://chatbot-backend-h8d0.onrender.com", {
+const socket = io("http://localhost:5000", {
   path: "/socket.io/",
 });
 
@@ -68,7 +68,9 @@ const Chatbot = () => {
           ))}
           {isTyping && (
             <div className="p-3 bg-gray-300 text-black self-start rounded-lg max-w-xs">
-              Bot is typing...
+              Bot is typing<span className="dot">.</span>
+              <span className="dot">.</span>
+              <span className="dot">.</span>
             </div>
           )}
         </div>
@@ -94,4 +96,5 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
+
 
