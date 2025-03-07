@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import "./index.css";
 
-const socket = io("http://localhost:5000", {
+const socket = io("https://chatbot-backend-h8d0.onrender.com/", {
   path: "/socket.io/",
 });
 
