@@ -68,7 +68,9 @@ const Chatbot = () => {
           ))}
           {isTyping && (
             <div className="p-3 bg-gray-300 text-black self-start rounded-lg max-w-xs">
-              Bot is typing
+              Bot is typing <span className="dot">.</span>
+              <span className="dot">.</span>
+              <span className="dot">.</span>
             </div>
           )}
         </div>
