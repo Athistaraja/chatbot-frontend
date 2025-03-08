@@ -4,6 +4,7 @@ import "./index.css";
 
 const socket = io("https://chatbot-backend-h8d0.onrender.com/", {
   path: "/socket.io/",
+  transports: ["websocket"],
 });
 
 const Chatbot = () => {
